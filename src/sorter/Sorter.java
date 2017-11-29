@@ -21,32 +21,18 @@ public class Sorter {
 
         //Bubble Search
         Random r = new Random();
-        int[] test = new int[7];
+        BubbleSearch b = new BubbleSearch();
+        int[] test = new int[99];
 
         for (int i = 0; i < test.length; i++) {
             test[i] = r.nextInt(500);
         }
-        bubbleSearch(test);
-        for (int i = 0; i < (test.length - 1); i++) {
-            System.out.print(test[i] + ", ");
+        b.bubbleSearch(test);
+        for (int i = 0; i < test.length; i++) {
+            System.out.println(test[i]);
         }
-        System.out.print(test[test.length]);
     }
 
-    public static void bubbleSearch(int[] test) {
-        for (int i = 0; i < test.length; i++) {
-            int swapsDone = 0;
-            for (int j = 0; j < (test.length - 1); j++) {
-                if (test[j] > test[j + 1]) {
-                    int temp = test[j + 1];
-                    test[j + 1] = test[j];
-                    test[j] = temp;
-                    swapsDone++;
-                }
-            }
-            if (swapsDone == 0) {
-                break;
-            }
-        }
-    }
+    //JADEN'S METHOD
+    
 }
