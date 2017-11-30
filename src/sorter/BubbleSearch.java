@@ -5,20 +5,27 @@
  */
 package sorter;
 
+import java.io.*;
+import java.util.Scanner;
+
 /**
  *
  * @author 072698376
  */
 public class BubbleSearch {
 
-    public void bubbleSearch(int[] test) {
-        for (int i = 0; i < test.length; i++) {
+    SortFileReader r = new SortFileReader("stockdataunsorted.txt");
+    String[] sortThis = new String[r.fileLength(r.file)];
+
+    public void bubbleSort() throws IOException {
+        scanIn(r.file);
+        for (int i = 0; i < sortThis.length; i++) {
             int swapsDone = 0;
-            for (int j = 0; j < (test.length - 1); j++) {
-                if (test[j] > test[j + 1]) {
-                    int temp = test[j + 1];
-                    test[j + 1] = test[j];
-                    test[j] = temp;
+            for (int j = 0; j < (sortThis.length - 1); j++) {
+                if (sortThis[j].compareTo(sortThis[j + 1]) > 0) {
+                    String temp = sortThis[j + 1];
+                    sortThis[j + 1] = sortThis[j];
+                    sortThis[j] = temp;
                     swapsDone++;
                 }
             }
@@ -26,5 +33,13 @@ public class BubbleSearch {
                 break;
             }
         }
+    }
+
+    public void scanIn(File f) throws IOException {
+        Scanner s = new Scanner(f);
+        for (int i = 0; i < sortThis.length; i++) {
+            sortThis[i] = s.nextLine();
+        }
+        s.close();
     }
 }
